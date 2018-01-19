@@ -21,10 +21,17 @@ import _blenderscript
 if not os.path.isfile("potrace.exe"):
     raise RuntimeError("Missing dependancy: 'potrace.exe' could not be found")
 
+# verify folder structure exists
+for path in ["bmp","svg","out"]:
+    if not os.path.exists(path):
+        os.mkdir(path)
+
 # define job params from files
 
 files = os.listdir("bmp\\")
 models = {}
+if len(files) == 0:
+    raise ValueError("No Input: No bitmap files detected")
 for file in files:
     if not file.endswith(".bmp"):
         raise RuntimeError("File Error: All input files in '/bmp/' must be of type bitmap, with extension '.bmp'")
