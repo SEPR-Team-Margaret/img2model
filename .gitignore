@@ -1,0 +1,4 @@
+*.bmp
+*.svg
+*.3ds
+__pycache__/**
