@@ -8,6 +8,10 @@ for o in bpy.data.objects:
 bpy.ops.object.delete()
 
 x = bpy.ops.import_curve.svg(filepath=fp)
+
+for c in bpy.data.curves:
+	c.extrude = {1}
+
 for o in bpy.data.objects:
     o.select = True
     bpy.context.scene.objects.active = o
@@ -26,8 +30,7 @@ for o in bpy.data.objects:
     bpy.ops.object.mode_set(mode="OBJECT")
     o.select = False
     bpy.context.scene.objects.active = None
-for c in bpy.data.curves:
-	c.extrude = {1}
+
 
 
 fpo = "{2}"
